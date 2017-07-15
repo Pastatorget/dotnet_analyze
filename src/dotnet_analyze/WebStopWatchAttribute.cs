@@ -16,10 +16,29 @@ namespace dotnet_analyze
         private Stopwatch sw = null;
         private DiagnosticsHelper helper = null;
 
+        public Int32 MinimumTimeTaken { get; set; } = 0;
+
         public WebStopWatchAttribute()
         {
             this.sw = new Stopwatch();
             this.helper = new DiagnosticsHelper();
+        }
+
+        public WebStopWatchAttribute(Int32 timetaken)
+        {
+            this.MinimumTimeTaken = timetaken;
+        }
+
+        private void ResetAndPrint(string methodName)
+        {
+            // Will only trigger if elapsed time taken exceeds minimum time taken property
+            if (this.MinimumTimeTaken > 0 && this.MinimumTimeTaken < this.sw.Elapsed.Seconds)
+            {
+                this.helper.WriteMessage($"Time taken to execute {methodName}: {this.sw.Elapsed}");
+            }
+
+            this.sw.Stop();
+            this.sw.Reset();
         }
 
         #region Sync methods
@@ -31,8 +50,7 @@ namespace dotnet_analyze
 
         public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
         {
-            this.helper.WriteToConsole($"Time taken to execute {actionExecutedContext.ActionContext.ActionDescriptor.ActionName}: {this.sw.Elapsed}");
-            this.sw.Stop();
+            this.ResetAndPrint(actionExecutedContext.ActionContext.ActionDescriptor.ActionName);
             base.OnActionExecuted(actionExecutedContext);
         }
         #endregion
@@ -46,9 +64,7 @@ namespace dotnet_analyze
 
         public override Task OnActionExecutingAsync(HttpActionContext actionContext, CancellationToken cancellationToken)
         {
-            this.helper.WriteToConsole($"Time taken to execute {actionContext.ActionDescriptor.ActionName}: {this.sw.Elapsed}");
-            this.sw.Stop();
-            this.sw.Reset();
+            this.ResetAndPrint(actionContext.ActionDescriptor.ActionName);
             return base.OnActionExecutingAsync(actionContext, cancellationToken);
         }
         #endregion

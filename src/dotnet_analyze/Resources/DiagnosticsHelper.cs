@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,19 @@ namespace dotnet_analyze.Resources
             var tmp = $"{now} - {msg}";
 
             Console.WriteLine(tmp);
-            System.Diagnostics.Debug.WriteLine(tmp);
+        }
+
+        /// <summary>
+        /// Will print out both in trace and console
+        /// </summary>
+        /// <param name="msg"></param>
+        public void WriteMessage(string msg)
+        {
+            var now = DateTime.Now;
+            var tmp = $"{now} - {msg}";
+
+            Console.WriteLine(tmp);
+            Trace.WriteLine(tmp);
         }
     }
 }
