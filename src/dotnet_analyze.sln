@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet_analyze", "dotnet_analyze\dotnet_analyze.csproj", "{EBC84217-761F-4D7F-BE62-3FE23F6B6A7C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web-examples", "web-examples", "{88259785-5A87-4DCC-AE5A-A773711C95D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "library", "library", "{5F5B9636-80F7-40B7-8188-25AFD48EB012}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-framework", "web-examples\dotnet-framework\dotnet-framework.csproj", "{03A742C9-12BE-4CE2-839D-44C9CBF38E37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +21,19 @@ Global
 		{EBC84217-761F-4D7F-BE62-3FE23F6B6A7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBC84217-761F-4D7F-BE62-3FE23F6B6A7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBC84217-761F-4D7F-BE62-3FE23F6B6A7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03A742C9-12BE-4CE2-839D-44C9CBF38E37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03A742C9-12BE-4CE2-839D-44C9CBF38E37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03A742C9-12BE-4CE2-839D-44C9CBF38E37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03A742C9-12BE-4CE2-839D-44C9CBF38E37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EBC84217-761F-4D7F-BE62-3FE23F6B6A7C} = {5F5B9636-80F7-40B7-8188-25AFD48EB012}
+		{03A742C9-12BE-4CE2-839D-44C9CBF38E37} = {88259785-5A87-4DCC-AE5A-A773711C95D4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC9143ED-5EEB-4076-BAEF-062E8E399B64}
 	EndGlobalSection
 EndGlobal
